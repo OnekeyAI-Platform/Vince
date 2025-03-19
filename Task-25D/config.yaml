@@ -1,0 +1,44 @@
+radio_dir: D:\20240908-Vince
+task_type: 2.5D
+task_column: label
+# auto__label_file:
+#   - split_info\label-RND-0.csv
+#   - split_info\label-RND-1.csv
+#   - split_info\label-RND-2.csv
+#   - split_info\label-RND-3.csv
+#   - split_info\label-RND-4.csv 
+#   - split_info\label-RND-5.csv
+#   - split_info\label-RND-6.csv
+#   - split_info\label-RND-7.csv
+#   - split_info\label-RND-8.csv
+#   - split_info\label-RND-9.csv 
+# label_file: split_info\label-RND-5.csv
+label_file: group.csv
+ml_models:
+  - LR
+  - SVM
+  - RandomForest
+#   - ExtraTrees
+  - LightGBM
+#   - MLP
+  - XGBoost
+label_mapping: 
+  0: non-Osteoporosis
+  1: Osteoporosis
+subsets: [train, val, test]
+summary_model: [Clinical, Ensemble, MIL, Transformer, Combined]
+modals: [2.5D]
+sel_model:
+  Clinic: ExtraTrees
+  2DL: resnet50
+  3DL: ShuffleNet
+clinic_file: 
+metric_spec: AUC
+metric_spec_ids: 
+metric_spec_agg: mean
+save_dir: viz
+font.size: 12
+# use_youden: False
+clinic_file: Y:\20240908-Vince\Clinical.csv
+survival_file: Y:\20240908-Vince\Survival.csv
+compare_models: [Clinical-OS, MIL-OS, Combined-OS, Clinical-DFS, MIL-DFS, Combined-DFS]
